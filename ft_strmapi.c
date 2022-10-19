@@ -6,7 +6,7 @@
 /*   By: hbrouwer <hbrouwer@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/14 11:13:41 by hbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/14 11:31:53 by hbrouwer      ########   odam.nl         */
+/*   Updated: 2022/10/19 20:44:11 by hbrouwer      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,14 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char			*dest;
 
 	length = ft_strlen(s);
-	dest = (char *) malloc((length + 1) * sizeof(char));
-	if (dest == 0)
-		return (0);
+	dest = (char *) ft_calloc((length + 1), sizeof(char));
+	if (dest == NULL)
+		return (NULL);
 	i = 0;
 	while (i < length)
 	{
 		dest[i] = (*f)(i, s[i]);
 		i++;
 	}
-	dest[i] = '\0';
 	return (dest);
 }

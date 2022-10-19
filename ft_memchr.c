@@ -6,7 +6,7 @@
 /*   By: hbrouwer <hbrouwer@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 13:55:19 by hbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/14 19:34:57 by hbrouwer      ########   odam.nl         */
+/*   Updated: 2022/10/19 21:53:30 by hbrouwer      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ void	*ft_memchr(const void *s, int c, size_t n)
 			return ((void *)s + i);
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: hbrouwer <hbrouwer@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 12:08:56 by hbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/14 19:27:29 by hbrouwer      ########   odam.nl         */
+/*   Updated: 2022/10/19 20:43:25 by hbrouwer      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,5 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	if (s[i] == (char)c)
 		return ((char *)s + i);
-	return (0);
+	return (NULL);
 }

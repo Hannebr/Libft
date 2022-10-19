@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_lstnew.c                                        :+:    :+:            */
+/*   ft_lstnew_bonus.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: hbrouwer <hbrouwer@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/17 19:31:17 by hbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/17 20:56:23 by hbrouwer      ########   odam.nl         */
+/*   Updated: 2022/10/19 20:57:12 by hbrouwer      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ t_list	*ft_lstnew(void *content)
 	t_list	*result;
 
 	result = (t_list *) malloc(sizeof(t_list));
-	if (result == 0)
-		return (0);
+	if (result == NULL)
+		return (NULL);
 	result->content = content;
-	result->next = 0;
+	result->next = NULL;
 	return (result);
 }
