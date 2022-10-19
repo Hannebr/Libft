@@ -6,14 +6,14 @@
 /*   By: hbrouwer <hbrouwer@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/13 13:28:03 by hbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/14 12:28:58 by hbrouwer      ########   odam.nl         */
+/*   Updated: 2022/10/17 19:12:19 by hbrouwer      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-size_t	get_word_length(size_t index, char const *s, char c)
+static size_t	get_word_length(size_t index, char const *s, char c)
 {
 	size_t	len;
 
@@ -26,7 +26,7 @@ size_t	get_word_length(size_t index, char const *s, char c)
 	return (len);
 }
 
-int	count_words(char const *s, char c)
+static int	count_words(char const *s, char c)
 {
 	int		count;
 	int		i;
@@ -47,7 +47,7 @@ int	count_words(char const *s, char c)
 	return (count);
 }
 
-char	**ft_free(int i, char **result)
+static char	**ft_free(int i, char **result)
 {
 	while (i >= 0)
 	{

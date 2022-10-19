@@ -6,7 +6,7 @@
 /*   By: hbrouwer <hbrouwer@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 14:59:26 by hbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/14 19:13:05 by hbrouwer      ########   odam.nl         */
+/*   Updated: 2022/10/19 10:13:36 by hbrouwer      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	while (i < n)
 	{
 		if (str1[i] != str2[i])
-		{
 			return (str1[i] - str2[i]);
-		}
 		i++;
 	}
 	return (0);

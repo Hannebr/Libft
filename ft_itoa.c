@@ -6,7 +6,7 @@
 /*   By: hbrouwer <hbrouwer@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/13 15:49:18 by hbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/13 17:03:12 by hbrouwer      ########   odam.nl         */
+/*   Updated: 2022/10/17 19:13:55 by hbrouwer      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-size_t	num_len(int n)
+static size_t	num_len(int n)
 {
 	size_t	length;
 
@@ -27,7 +27,7 @@ size_t	num_len(int n)
 	return (length);
 }
 
-char	*ft_strrev(char *str, size_t len)
+static char	*ft_strrev(char *str, size_t len)
 {
 	size_t	i;
 	size_t	j;
@@ -46,7 +46,7 @@ char	*ft_strrev(char *str, size_t len)
 	return (str);
 }
 
-char	*convert_to_str(char *dest, int n, size_t length)
+static char	*convert_to_str(char *dest, int n, size_t length)
 {
 	size_t				i;
 	unsigned int		tmp;

@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_strncmp.c                                       :+:    :+:            */
+/*   ft_lstclear_bonus.c                                :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: hbrouwer <hbrouwer@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/06 13:25:45 by hbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/19 10:24:00 by hbrouwer      ########   odam.nl         */
+/*   Created: 2022/10/18 14:02:24 by hbrouwer      #+#    #+#                 */
+/*   Updated: 2022/10/18 14:16:14 by hbrouwer      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdlib.h>
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	size_t			i;
-	unsigned char	*str1;
-	unsigned char	*str2;
+	t_list	*tmp;
 
-	i = 0;
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	while (i < n && (str1[i] || str2[i]))
+	if (*lst == 0)
+		return ;
+	while ((*lst)->next != 0)
 	{
-		if (str1[i] != str2[i])
-			return ((int)(str1[i] - str2[i]));
-		i++;
+		tmp = *lst;
+		*lst = (*lst)->next;
+		(*del)(tmp->content);
+		free(tmp);
 	}
-	return (0);
+	tmp = *lst;
+	*lst = 0;
+	(*del)(tmp->content);
+	free(tmp);
 }

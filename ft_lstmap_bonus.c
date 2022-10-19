@@ -1,34 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_memmove.c                                       :+:    :+:            */
+/*   ft_lstmap_bonus.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: hbrouwer <hbrouwer@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/05 16:59:04 by hbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/19 10:17:38 by hbrouwer      ########   odam.nl         */
+/*   Created: 2022/10/18 14:23:38 by hbrouwer      #+#    #+#                 */
+/*   Updated: 2022/10/18 15:13:08 by hbrouwer      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t	i;
+	t_list	*head;
+	t_list	*tmp;
 
-	if (dst == 0 && src == 0)
+	if (lst == 0)
 		return (0);
-	if (dst < src)
-		return (ft_memcpy(dst, src, len));
-	else
+	head = ft_lstnew((*f)(lst->content));
+	if (head == 0)
 	{
-		i = len - 1;
-		while (i >= 0 && !(i > len))
-		{
-			*((char *)dst + i) = *((char *)src + i);
-			i--;
-		}
-		return ((void *)dst);
+		ft_lstdelone(lst, (*del));
+		return (0);
 	}
+	tmp = head;
+	while (lst->next != 0)
+	{
+		tmp->next = ft_lstnew((*f)(lst->next->content));
+		if (tmp->next == 0)
+		{
+			ft_lstdelone(lst->next, (*del));
+			return (0);
+		}
+		tmp = tmp->next;
+		lst = lst->next;
+	}
+	return (head);
 }
