@@ -6,7 +6,7 @@
 /*   By: hbrouwer <hbrouwer@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/18 14:23:38 by hbrouwer      #+#    #+#                 */
-/*   Updated: 2022/10/18 15:13:08 by hbrouwer      ########   odam.nl         */
+/*   Updated: 2022/10/19 16:16:51 by hbrouwer      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		tmp->next = ft_lstnew((*f)(lst->next->content));
 		if (tmp->next == 0)
 		{
-			ft_lstdelone(lst->next, (*del));
+			ft_lstdelone(lst, (*del));
 			return (0);
 		}
 		tmp = tmp->next;
