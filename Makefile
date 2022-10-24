@@ -24,26 +24,32 @@ SRC = 	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strle
 
 BONUS_SRC = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 
-OBJS = ${SRC:.c=.o}
+OBJS = $(SRC:.c=.o)
 
-BONUS_OBJS = ${BONUS_SRC:.c=.o}
+BONUS_OBJS = $(BONUS_SRC:.c=.o)
 
-all: 		${NAME}
+ifdef WITH_BONUS
+OBJ_FILES = $(OBJS) $(BONUS_OBJS)
+else
+OBJ_FILES = $(OBJS)
+endif
+
+all: 		$(NAME)
 
 %.o: 		%.c
-			${CC} ${FLAGS} -c $< -o $@
+			$(CC) $(FLAGS) -c $< -o $@
 
-${NAME}: 	${OBJS}
-			${AR} ${ARFLAGS} ${NAME} ${OBJS}	
+$(NAME): 	$(OBJ_FILES)
+			$(AR) $(ARFLAGS) $(NAME) $(OBJ_FILES)	
 		
-bonus:		${OBJS} ${BONUS_OBJS}
-			${AR} ${ARFLAGS} ${NAME} ${OBJS} ${BONUS_OBJS}
+bonus:		
+			@$(MAKE) WITH_BONUS=1 all
 
 clean: 
-			rm -f ${OBJS} ${BONUS_OBJS}
+			rm -f $(OBJS) $(BONUS_OBJS)
 	
 fclean:		clean
-			rm -f ${NAME}
+			rm -f $(NAME)
 
 re:			fclean all
 
